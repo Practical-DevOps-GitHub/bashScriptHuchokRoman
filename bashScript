@@ -1,0 +1,14 @@
+#!/bin/bash
+file_path="/etc/passwd"
+#Check if file not found show message
+if [! -f "$file_path" ]; then
+  echo "File not found"
+exit 1
+fi
+#Find users which have /bin/bash
+users=$(grep '/bin/bash' "$file_path" | cut -d: -f1)
+if [ -z "$users ]; then
+  echo "No users whith /bin/bash"
+  else
+  echo "Users are: $users"
+fi
